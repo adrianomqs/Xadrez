@@ -1,4 +1,4 @@
-﻿namespace Xadrez
+﻿namespace TabLib
 {
     public enum Cor
     {

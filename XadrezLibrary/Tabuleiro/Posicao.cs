@@ -1,4 +1,4 @@
-﻿namespace Tabuleiro
+﻿namespace TabLib
 {
     public class Posicao
     {
