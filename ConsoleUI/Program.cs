@@ -1,5 +1,6 @@
 ﻿using System;
 using Xadrez;
+using Tabuleiro;
 
 namespace ConsoleUI
 {
@@ -7,7 +8,11 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            Posicao p = new Posicao(1, 1);
 
+            Console.WriteLine(p);
+            Console.ReadLine();
+            
         }
     }
 }
