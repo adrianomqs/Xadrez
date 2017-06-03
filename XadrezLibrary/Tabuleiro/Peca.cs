@@ -14,6 +14,6 @@
             Cor = cor;
             QtdMovimentos = 0;
         }
-
+        
     }
 }
