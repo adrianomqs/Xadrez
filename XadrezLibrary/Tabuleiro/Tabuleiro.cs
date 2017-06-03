@@ -18,10 +18,42 @@
             return Pecas[linha, coluna];
         }
 
+        public Peca Get(Posicao pos)
+        {
+            return Pecas[pos.Linha, pos.Coluna];
+        }
+
         public void SetPeca (Peca p, Posicao pos)
         {
+            if (ExistePeca(pos))
+            {
+                throw new TabuleiroException("Ja existe uma peca nessa posicao! Posicao:" + pos.Linha + "," + pos.Coluna);
+            }
             Pecas[pos.Linha, pos.Coluna] = p;
             p.Posicao = pos;
+        }
+
+        public bool ExistePeca(Posicao pos)
+        {
+            ValidarPosicao(pos);
+            return Get(pos) != null;
+        }
+
+        public bool PosValida(Posicao pos)
+        {
+            if (pos.Linha<0 || pos.Linha>=Linhas || pos.Coluna<0|| pos.Coluna>=Colunas)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void ValidarPosicao(Posicao pos)
+        {
+            if (!PosValida(pos))
+            {
+                throw new TabuleiroException("Posicao Invalida! Posicao:" + pos.Linha + "," + pos.Coluna);
+            }
         }
 
     }
