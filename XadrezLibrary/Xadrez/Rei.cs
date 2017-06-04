@@ -27,57 +27,57 @@ namespace Xadrez
 
             Posicao pos = new Posicao(0, 0);
 
-            //Movimento Norte
+            //Movimento Cima
             pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
-            //Movimento Nordeste
+            //Movimento Cima-Direita
             pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
-            //Movimento Noroeste
+            //Movimento Cima-Esquerda
             pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna - 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
-            //Movimento Leste
-            pos.DefinirValores(Posicao.Linha, Posicao.Coluna + 1);
-            if (Tab.PosicaoValida(pos) && PodeMover(pos))
-            {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-
-            //Movimento Oeste
+            //Movimento Esquerda
             pos.DefinirValores(Posicao.Linha, Posicao.Coluna - 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
-            //Movimento Sul
+            //Movimento Direita
+            pos.DefinirValores(Posicao.Linha, Posicao.Coluna + 1);
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+
+            //Movimento Atras
             pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
-            //Movimento Sudeste
-            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
+            //Movimento Atras-Esquerda
+            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
-            //Movimento Sudoeste
-            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
+            //Movimento Atras-Direta
+            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
