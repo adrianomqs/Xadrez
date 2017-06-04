@@ -14,6 +14,12 @@
             Cor = cor;
             QtdMovimentos = 0;
         }
-        
+
+        public void IncrmentarMovimentos()
+        {
+            QtdMovimentos++;
+        }
+
+
     }
 }

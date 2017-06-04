@@ -23,7 +23,7 @@
             return Pecas[pos.Linha, pos.Coluna];
         }
 
-        public void SetPeca (Peca p, Posicao pos)
+        public void ColocarPeca (Peca p, Posicao pos)
         {
             if (ExistePeca(pos))
             {
@@ -31,6 +31,21 @@
             }
             Pecas[pos.Linha, pos.Coluna] = p;
             p.Posicao = pos;
+        }
+
+        public Peca RetirarPeca(Posicao pos)
+        {
+            if (Get(pos) == null)
+            {
+                return null;
+            }
+            else
+            {
+                Peca aux = Get(pos);
+                aux.Posicao = null;
+                Pecas[pos.Linha, pos.Coluna] = null;
+                return aux;
+            }
         }
 
         public bool ExistePeca(Posicao pos)
@@ -55,6 +70,5 @@
                 throw new TabuleiroException("Posicao Invalida! Posicao:" + pos.Linha + "," + pos.Coluna);
             }
         }
-
     }
 }

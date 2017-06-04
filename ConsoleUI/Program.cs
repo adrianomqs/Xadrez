@@ -8,21 +8,28 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            Tabuleiro tab = new Tabuleiro(8, 8);
-            try { 
-            tab.SetPeca(new Torre(tab, Cor.Preto), new Posicao(0, 0));
-            tab.SetPeca(new Rei(tab, Cor.Branco), new Posicao(0, 1));
-            tab.SetPeca(new Torre(tab, Cor.Preto), new Posicao(1, 3));
-            tab.SetPeca(new Rei(tab, Cor.Branco), new Posicao(2, 4));
+            try
+            {
+                PartidaXadrez partida = new PartidaXadrez();
 
-            Tela.ImprimirTabuleiro(tab);
+                while (!partida.Terminado)
+                {
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partida.Tab);
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+                    Console.WriteLine("");
+                    Console.WriteLine("Destino: ");
+                    Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
+
+                    partida.ExecutaMovimento(origem, destino);
+                }
             }
             catch (TabuleiroException e)
             {
                 Console.WriteLine(e);
             }
-
-
+            
             Console.ReadLine();
         }
     }
