@@ -18,7 +18,13 @@ namespace ConsoleUI
                     Tela.ImprimirTabuleiro(partida.Tab);
                     Console.Write("Origem: ");
                     Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
-                    Console.WriteLine("");
+
+                    bool[,] posicoesPossiveis = partida.Tab.Get(origem).MovimentosPossiveis();
+
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partida.Tab, posicoesPossiveis);
+
+
                     Console.WriteLine("Destino: ");
                     Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
 

@@ -13,15 +13,35 @@ namespace ConsoleUI
                 Console.Write(8 - i + " ");
                 for (int j=0; j<tab.Colunas; j++)
                 {
-                    if (tab.Get(i, j) == null)
+                    Tela.ImprimirPeca(tab.Get(i, j));
+                }
+                Console.WriteLine();
+            }
+            Console.Write("  a b c d e f g h");
+            Console.WriteLine("");
+        }
+
+        public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] possiveis)
+        {
+            ConsoleColor fundoOriginal = Console.BackgroundColor;
+            ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
+
+            for (int i = 0; i < tab.Linhas; i++)
+            {
+                Console.Write(8 - i + " ");
+                for (int j = 0; j < tab.Colunas; j++)
+                {
+                    if (possiveis[i, j])
                     {
-                        Console.Write("- ");
+                        Console.BackgroundColor = fundoAlterado;
                     }
                     else
                     {
-                        Tela.ImprimirPeca(tab.Get(i, j));
-                        Console.Write(" ");
+                        Console.BackgroundColor = fundoOriginal;
                     }
+
+                    ImprimirPeca(tab.Get(i, j));
+                    Console.BackgroundColor = fundoOriginal;
                 }
                 Console.WriteLine();
             }
@@ -40,18 +60,27 @@ namespace ConsoleUI
 
         public static void ImprimirPeca(Peca peca)
         {
-            if (peca.Cor == Cor.Branco){
-                ConsoleColor aux = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write(peca);
-                Console.ForegroundColor = aux;
+            if (peca == null)
+            {
+                Console.Write("- ");
             }
             else
             {
-                ConsoleColor aux = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(peca);
-                Console.ForegroundColor = aux;
+                if (peca.Cor == Cor.Branco)
+                {
+                    ConsoleColor aux = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write(peca);
+                    Console.ForegroundColor = aux;
+                }
+                else
+                {
+                    ConsoleColor aux = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(peca);
+                    Console.ForegroundColor = aux;
+                }
+                Console.Write(" ");
             }
         }
     }
