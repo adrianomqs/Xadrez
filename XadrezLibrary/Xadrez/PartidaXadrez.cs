@@ -6,14 +6,14 @@ namespace Xadrez
     public class PartidaXadrez
     {
         public Tabuleiro Tab { get; private set; }
-        private int turno;
-        private Cor jogadorAtual;
+        public int Turno { get; private set; }
+        public Cor jogadorAtual { get; private set; }
         public bool Terminado { get; private set; }
 
         public PartidaXadrez()
         {
             Tab = new Tabuleiro(8, 8);
-            turno = 1;
+            Turno = 1;
             jogadorAtual = Cor.Branco;
             IniciarPecas();
         }
@@ -25,6 +25,51 @@ namespace Xadrez
             Peca pecaCapturada = Tab.RetirarPeca(destino);
             Tab.ColocarPeca(p, destino);
             Terminado = false;
+        }
+
+        public void RealizaJogada(Posicao origem, Posicao destino)
+        {
+            ExecutaMovimento(origem, destino);
+            Turno++;
+            MudaJogador();
+        }
+
+        public void ValidarOrigem(Posicao pos)
+        {
+            if (Tab.gPeca(pos) == null)
+            {
+                throw new TabuleiroException("Nao Existe Peca na posicao de origem escolhida");
+            }
+
+            if (Tab.gPeca(pos).Cor != jogadorAtual)
+            {
+                throw new TabuleiroException("A Peca escolhida nao e' sua");
+            }
+
+            if (!Tab.gPeca(pos).ExisteMovimentosPossiveis() )
+            {
+                throw new TabuleiroException("Nao Existe Movimentos possivel para essa peca");
+            }
+        }
+
+        public void ValidarDestino(Posicao origem, Posicao destino)
+        {
+            if (!Tab.gPeca(origem).PodeMover(destino))
+            {
+                throw new TabuleiroException("Posicao de Destino Invalida");
+            }
+        }
+
+        private void MudaJogador()
+        {
+            if (jogadorAtual == Cor.Branco)
+            {
+                jogadorAtual = Cor.Preto;
+            }
+            else
+            {
+                jogadorAtual = Cor.Branco;
+            }
         }
 
         private void IniciarPecas()

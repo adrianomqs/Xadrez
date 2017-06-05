@@ -4,7 +4,7 @@ namespace TabLib
 {
     public class TabuleiroException : Exception
     {
-        public TabuleiroException(string mensagem) : base(mensagem)
+        public TabuleiroException(string msg) : base(msg)
         {
 
         }

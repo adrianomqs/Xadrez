@@ -17,7 +17,7 @@ namespace Xadrez
 
         private bool PodeMover(Posicao pos)
         {
-            Peca p = Tab.Get(pos);
+            Peca p = Tab.gPeca(pos);
             return p == null || p.Cor != Cor;
         }
 
@@ -32,8 +32,8 @@ namespace Xadrez
             while (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
-                Peca p = Tab.Get(pos);
-                if (Tab.Get(pos) != null && Tab.Get(pos).Cor != Cor)
+                Peca p = Tab.gPeca(pos);
+                if (Tab.gPeca(pos) != null && Tab.gPeca(pos).Cor != Cor)
                 {
                     break;
                 }
@@ -45,7 +45,7 @@ namespace Xadrez
             while (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
-                if (Tab.Get(pos) != null && Tab.Get(pos).Cor != Cor)
+                if (Tab.gPeca(pos) != null && Tab.gPeca(pos).Cor != Cor)
                 {
                     break;
                 }
@@ -57,7 +57,7 @@ namespace Xadrez
             while (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
-                if (Tab.Get(pos) != null && Tab.Get(pos).Cor != Cor)
+                if (Tab.gPeca(pos) != null && Tab.gPeca(pos).Cor != Cor)
                 {
                     break;
                 }
@@ -69,7 +69,7 @@ namespace Xadrez
             while (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
-                if (Tab.Get(pos) != null && Tab.Get(pos).Cor != Cor)
+                if (Tab.gPeca(pos) != null && Tab.gPeca(pos).Cor != Cor)
                 {
                     break;
                 }

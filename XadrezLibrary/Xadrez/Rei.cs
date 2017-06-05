@@ -17,7 +17,7 @@ namespace Xadrez
 
         private bool PodeMover(Posicao pos)
         {
-            Peca p = Tab.Get(pos);
+            Peca p = Tab.gPeca(pos);
             return p == null || p.Cor != Cor;
         }
 

@@ -18,7 +18,7 @@
             return Pecas[linha, coluna];
         }
 
-        public Peca Get(Posicao pos)
+        public Peca gPeca(Posicao pos)
         {
             return Pecas[pos.Linha, pos.Coluna];
         }
@@ -35,13 +35,13 @@
 
         public Peca RetirarPeca(Posicao pos)
         {
-            if (Get(pos) == null)
+            if (gPeca(pos) == null)
             {
                 return null;
             }
             else
             {
-                Peca aux = Get(pos);
+                Peca aux = gPeca(pos);
                 aux.Posicao = null;
                 Pecas[pos.Linha, pos.Coluna] = null;
                 return aux;
@@ -51,7 +51,7 @@
         public bool ExistePeca(Posicao pos)
         {
             ValidarPosicao(pos);
-            return Get(pos) != null;
+            return gPeca(pos) != null;
         }
 
         public bool PosicaoValida(Posicao pos)
